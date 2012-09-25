@@ -1,5 +1,9 @@
-# vSlider dynamic slider / carousel plugin vSlider is a flexible and dynamic carousel/slider plugin. 
+# vSlider - dynamic slider / carousel plugin (current version: 2.0.1)
+
+vSlider is a flexible and dynamic carousel/slider plugin. 
+
 It is designed to help you build a slideshow with ease. The plugin currently supports sliding transtions. 
+
 It has most of the necessary features such as pagination, navigation (previous and next to navigate around carousel and/or each slide). 
 
 The main goal for this plugin is to have, if not all, most of the control over the markup and html structure each time user creates a slideshow. 
