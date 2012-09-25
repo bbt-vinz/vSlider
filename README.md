@@ -26,8 +26,8 @@ NOTE: It is required to have [Modernizr](2.0.6+) and [jQuery](1.7+) installed pr
 
 ## Usage Basic usage of this plugin. 
 
-```
-js $( element ).vSlider( options ); 
+```js 
+$( element ).vSlider( options ); 
 ``` 
 
 More updates to come!
