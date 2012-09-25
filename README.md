@@ -9,7 +9,7 @@ It has most of the necessary features such as pagination, navigation (previous a
 The main goal for this plugin is to have, if not all, most of the control over the markup and html structure each time user creates a slideshow. 
 
 The plugin has been tested and supports most of the major browsers - Firefox/Safari/Chrome and IE7+ 
-
+ 
 NOTE: It is required to have [Modernizr](2.0.6+) and [jQuery](1.7+) installed prior to include this plugin. 
 
 [jQuery]: http://www.jquery.com 
