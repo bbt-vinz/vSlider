@@ -15,7 +15,9 @@ NOTE: It is required to have [Modernizr](2.0.6+) and [jQuery](1.7+) installed pr
 [jQuery]: http://www.jquery.com 
 [Modernizr]: http://www.modernizr.com 
 
-## Options Current options are listed below for the 2.0.1 release: 
+## Options 
+
+Current options are listed below for the 2.0.1 release: 
 
 * `itemsperslide`: user can specify the amount of images vslider will slide each time.
 * `spacing`: user can specify spacing between images (in pixel). 
@@ -24,10 +26,37 @@ NOTE: It is required to have [Modernizr](2.0.6+) and [jQuery](1.7+) installed pr
 * `description`: displays description of the image. 
 * `divider`: appends divider to each slide. 
 
-## Usage Basic usage of this plugin. 
+## Implementation 
+
+Basic usage of this plugin. 
 
 ```js 
 $( element ).vSlider( options ); 
 ``` 
 
-More updates to come!
+Here are the basic HTML structures. User can rearrange order of the structurse in any way they want but only to make sure they stay inside the div.vslider.
+
+```html
+<div class="vslider">
+        <div class="prev-pane unselectable"></div> 
+        <div class="next-pane unselectable"></div>
+        <div class="img-pane unselectable">
+           <img src="[vslider:default-img]" alt=""/> 
+        </div>
+        <div class="controls">
+            <div class="navigation">
+                <div class="screen">
+                     [vslider:thumbs]
+                </div>
+            </div>
+            <div class="prev unselectable"></div>
+            <div class="next unselectable"></div>
+        </div>
+        <!--pagination-->
+        <nav class="pagination">
+           <ul></ul>
+           <div class="clear"></div>
+        </nav>
+        <div class="info-pane"><h2></h2><span></span></div>
+</div>
+``` 
