@@ -28,14 +28,14 @@ Current options are listed below for the 2.0.1 release:
 
 ## Implementation 
 
-First, make sure to include Modernizr and jQuery inside <head>:
+First, make sure to include Modernizr and jQuery inside <head>.
 
 ```js
 <script type="text/javascript" src="https://raw.github.com/Modernizr/Modernizr/master/modernizr.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
 ```
 
-Then include css for the vSlider inside the <head>:
+Then include css for the vSlider inside the <head>.
 
 ```css
 <link rel="icon" type="image/x-icon" href="https://raw.github.com/bbt-vinz/vSlider/master/vslider-2.0.1.css" />
