@@ -28,13 +28,20 @@ Current options are listed below for the 2.0.1 release:
 
 ## Implementation 
 
-Basic usage of this plugin. 
+First, make sure to include Modernizr and jQuery inside <head>:
 
-```js 
-$( element ).vSlider( options ); 
-``` 
+```js
+<script type="text/javascript" src="https://raw.github.com/Modernizr/Modernizr/master/modernizr.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+```
 
-Here are the basic HTML structures. User can rearrange order of the structurse in any way they want but only to make sure they stay inside the div.vslider.
+Then include css for the vSlider inside the <head>:
+
+```css
+<link rel="icon" type="image/x-icon" href="https://raw.github.com/bbt-vinz/vSlider/master/vslider-2.0.1.css" />
+```
+
+Below is the basic HTML structures. User can rearrange order of the structurse in any way they want but only to make sure they stay inside the div.vslider. You can put this anywhere inside the <body>.
 
 ```html
 <div class="vslider">
@@ -59,4 +66,10 @@ Here are the basic HTML structures. User can rearrange order of the structurse i
         </nav>
         <div class="info-pane"><h2></h2><span></span></div>
 </div>
+``` 
+
+Here's the simple call function:
+
+```js 
+$( element ).vSlider( options ); 
 ``` 
