@@ -30,7 +30,7 @@ Current options are listed below for the 2.0.1 release:
 
 First, make sure to include Modernizr and jQuery inside the [head] tag:
 
-```js
+```css
 <script type="text/javascript" src="https://raw.github.com/Modernizr/Modernizr/master/modernizr.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
 ```
@@ -41,7 +41,7 @@ Then include css for the vSlider inside the [head] tag:
 <link rel="icon" type="image/x-icon" href="https://raw.github.com/bbt-vinz/vSlider/master/vslider-2.0.1.css" />
 ```
 
-Below is the basic HTML structures. User can rearrange order of the structurse in any way they want but only to make sure they stay inside the div.vslider. You can put this anywhere inside the [body] tag:
+Below is the basic HTML structures. This code must be wrapped with with a unique id before making a call. User can rearrange order of the structurse in any way they want but only to make sure they stay inside the "vslider" class. You can put this anywhere inside the [body] tag:
 
 ```html
 <div class="vslider">
@@ -73,3 +73,5 @@ Here's the simple call function:
 ```js 
 $( element ).vSlider( options ); 
 ``` 
+
+User can specify options using the list of options provided above. It is possible to have multiple galleries on one page. Just make sure to specify a unique id to each one. 
