@@ -1,7 +1,7 @@
 /*  
- * vSlider 2.0.1  
+ * vSlider 2.0.2 
  * dynamic slideshow / carousel plugin
- * requires : modernizr 2.0.6+ and jquery 1.7+ 
+ * requires : modernizr 2.0.6+ and jquery 1.7+
  * usage : $( element ).vSlider( options );
 */   
 
@@ -9,20 +9,23 @@
   $.fn.vSlider = function( options ) {  
 
     var settings = $.extend( {      
-        itemsperslide    : 1,        // amount of images vslider will slide each time
-        spacing          : 0,        // spacing between images
-        auto             : 0,        // auto slide - true if more than 0 (in millisecond)
-        title            : false,    // show title for each image onclick
-        desc             : false,    // show description for each image onclick
-        divider          : false     // add divider to each pagination
+        itemsperslide    : 1,            // amount of images vslider will slide each time
+        spacing          : 0,            // spacing between images
+        auto             : 0,            // auto slide - true if more than 0 (in millisecond)
+        title            : false,        // show title for each image onclick
+        desc             : false,        // show description for each image onclick
+        divider          : false,        // add divider to each pagination
+        orientation      : "horizontal"  // set orientation
     }, options);
 
     var self = this.find(".vslider");
-    var items = self.find('.item');
-    var total = self.find('.item').length;
+    var items = self.find(".item");
+    var total = self.find(".item").length;
     var total2 = Math.ceil(total / settings.itemsperslide);
-    var slideshow_width =  self.find('.navigation').width();
+    var slideshow_width =  self.find(".navigation").width();
+    var slideshow_height =  self.find(".navigation").height();
     var total_width = total2 * slideshow_width;
+    var total_height = total2 * slideshow_height;
     var npos = 0;
     var next,prev,start,end;
  
@@ -30,7 +33,7 @@
         // create carousel thumbnails
         if(self.find(".small").length) {
            self.find(".thumb").each(function(i){   
-               $(this).css("cssText","background:url("+$(this).find('.small').attr('src').replace(/ /g,"%20").replace(/'/g,"%27").replace("(","%28").replace(")","%29")+") no-repeat 50% 50%");
+               $(this).css("cssText","background:url("+$(this).find(".small").attr("src").replace(/ /g,"%20").replace(/'/g,"%27").replace("(","%28").replace(")","%29")+") no-repeat 50% 50%");
            });  
         }
     
@@ -42,7 +45,7 @@
         }
         
         // navigation for thumbnails
-        self.find('.prev').live('click',function(e) {
+        self.find(".prev").live("click",function(e) {
           e.preventDefault();
           npos--;
           if(npos < 0) npos = total2-1;
@@ -51,7 +54,7 @@
           resettimer();
         });
         
-        self.find('.next').live('click',function(e) {
+        self.find(".next").live("click",function(e) {
           e.preventDefault();
           npos++;
           if(npos >= total2) npos = 0;
@@ -62,7 +65,7 @@
         
         // auto slide
         function autoanimate() {
-            (self.find(".next-pane").length)?self.find('.next-pane').click():self.find('.next').click();
+            (self.find(".next-pane").length)?self.find(".next-pane").click():self.find(".next").click();
         }
       
         // reset timer
@@ -76,7 +79,7 @@
         if(settings.auto>0) { var timerhandle = setTimeout(autoanimate,settings.auto); }
         
         // navigation for image pane
-        self.find('.next-pane').live('click',function() {
+        self.find(".next-pane").live("click",function() {
              prev = 0;
              self.find(".thumb.active").parent().next().find(".thumb").click();
              if(next==1) {      
@@ -100,7 +103,7 @@
              resettimer();
         });
         
-        self.find('.prev-pane').live('click',function() {
+        self.find(".prev-pane").live("click",function() {
              next = 0;
              self.find(".thumb.active").parent().prev().find(".thumb").click();
              if(prev==1) {      
@@ -126,7 +129,7 @@
         
         // update gallery pane on click
         if(self.find(".img-pane").length) {
-            self.find(".thumb").live('click',function(e) {
+            self.find(".thumb").live("click",function(e) {
                e.preventDefault();
         
                $(this).parents(".navigation").parent().prev().find("img").hide().load(function() {
@@ -155,7 +158,7 @@
               $("<li class='page' rel="+i+">"+(i+1)+"</li>").appendTo(self.find("ul"));  
            };  
            
-           self.find(".page").live('click',function(e) {
+           self.find(".page").live("click",function(e) {
                e.preventDefault();
                var p = $(this);
                var pos = $(this).attr("rel");         
@@ -163,18 +166,27 @@
                npos = pos;
                self.find(".page").removeClass("active");
                $(this).addClass("active");
-               (!Modernizr.csstransitions)?self.find('.screen').stop().animate({left:pos * -(slideshow_width+settings.spacing)}, 350):self.find('.screen').css({"left":pos * -(slideshow_width+settings.spacing)});
+             
+               if(settings.orientation=="vertical") {
+                  (!Modernizr.csstransitions)?self.find(".screen").stop().animate({top:pos * -(slideshow_height+settings.spacing)}, 350):self.find(".screen").css({"top":pos * -(slideshow_height+settings.spacing)});
+               } else {
+                  (!Modernizr.csstransitions)?self.find(".screen").stop().animate({left:pos * -(slideshow_width+settings.spacing)}, 350):self.find(".screen").css({"left":pos * -(slideshow_width+settings.spacing)});
+               }
              
                var position = p.position();
                if(self.find(".pointer").length) {
                   // animated pointer to center to each pagination
-                  ($.browser.msie)?self.find(".pointer").stop().animate({left: ( position.left+(p.width()/2) ) },500):self.find(".pointer").css({"left": ( position.left+(p.width()/2) )  });
+                  if(settings.orientation=="vertical") {
+                     ($.browser.msie)?self.find(".pointer").stop().animate({top: ( position.top+(p.height()/2) ) },500):self.find(".pointer").css({"top": ( position.top+(p.height()/2) )  });
+                  } else {  
+                     ($.browser.msie)?self.find(".pointer").stop().animate({left: ( position.left+(p.width()/2) ) },500):self.find(".pointer").css({"left": ( position.left+(p.width()/2) )  });
+                  }
                }
            });
     
            // add divider for pagination
            if(settings.divider==true) {
-               self.find('.page + .page').before($('<li class="divider">-</li>'));
+               self.find(".page + .page").before($('<li class="divider">-</li>'));
            }
                  
            // remove pagination if there's only one page
