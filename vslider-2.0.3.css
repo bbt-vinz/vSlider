@@ -1,0 +1,55 @@
+/* vSlider default css 
+------------------------------------------------------------ */
+
+.vslider .screen {
+    clear:both;
+    position:relative;
+    left:0px;
+    width:20000em;
+} 
+
+.vslider .screen {
+    transition:all 450ms ease;
+    -moz-transition:all 450ms ease;
+    -webkit-transition:all 450ms ease;
+    -o-transition:all 450ms ease;
+    -ms-transition:all 450ms ease;
+}
+
+.vslider .prev,
+.vslider .next {
+    position:absolute;
+    z-index:2;
+    cursor:pointer;
+}
+
+.vslider .next-pane,.vslider .prev-pane {
+    position:absolute;
+    z-index:3;
+    cursor:pointer;
+}
+
+.vslider .controls,.vslider .navigation {
+    position:relative;
+}
+
+.vslider .pagination ul {
+  clear:left;
+  float:left;
+  width:100%;
+  position:relative;
+}
+
+.vslider .pagination ul li {
+  display:block;
+  cursor:pointer;
+  float:left;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+.vslider .pagination ul li:hover,.vslider .pagination ul li.active {
+}
